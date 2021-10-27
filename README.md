@@ -1,3 +1,5 @@
-# parcel-project-template
+# goit-js-hw-12-countries
 
-parcel-project-template
+
+goit-js-hw-12-countries
+
