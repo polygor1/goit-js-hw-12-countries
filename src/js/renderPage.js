@@ -5,10 +5,13 @@ import {refs} from './refs';
 import getList from './getList';
 import elementMarkupTemlate from '../templates/markup.hbs';
 
+// ========= main start ===============
 // Вводим строку в input и ждем
 refs.input.addEventListener('input',
   debounce(getSearchString, 500),
 );
+// ========= main end ===============
+
 // Проверяем значение с инпута 
 function getSearchString(event) {
 // убираем пробелы
@@ -58,7 +61,7 @@ function showResult(array) {
     // ругаемся и ждем следующую букву
     errorRequest('Too many matches found. Please enter a more specific query!');
   }
-}
+};
 // Создаем разметку для элемента по шаблону из .hbs
 function showContentsElement(element) {
   window.addEventListener('keydown', onKeyPress);
@@ -90,8 +93,7 @@ function onKeyPress(event) {
     };
   }
 };
-
-// вываливание по клику мышки на экране
+// вываливание по клику мышкой на экране
 function onOverlayClick(event) {
   const target = event.target;
   if (target.classList.value === "screen__overlay") {
