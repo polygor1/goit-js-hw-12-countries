@@ -14,8 +14,9 @@ function getSearchString(event) {
 // убираем пробелы
   let inputValue = event.target.value.trim();
 // если пустая строка - ругаемся
-  if (!inputValue) {      
-    errorRequest();
+  if (!inputValue) {
+    clearContent();
+    errorRequest('Invalid request. Please try again');
     return;
   };
 // если норм лезем искать по списку в сети и получаем array или ругаемся
@@ -25,7 +26,6 @@ function getSearchString(event) {
 };
 // Выводим значение в зависимости от полученого к-ва объектов массива
 function showResult(array) {
-// document.addEventListener("click", clearContent());
   if (array.length < 2) {
     // сразу показываем контент выбранного элемента
     clearContent();
@@ -35,8 +35,8 @@ function showResult(array) {
   if (array.length >= 2 && array.length <= 10) {
     // чистим место
     refs.inputList.innerHTML = '';
-    refs.countryContainer.innerHTML = '';  
-    // выводим .name списка элементов
+    refs.elementContainer.innerHTML = '';  
+    // выводим name списка элементов
     array.forEach(element => {
         refs.inputList.insertAdjacentHTML('beforeend',`<li>${element.name}</li>`)
     });
@@ -53,36 +53,48 @@ function showResult(array) {
   };
  
   if (array.length > 10) {
-    // чистим место
-    refs.countryContainer.innerHTML = '';  
+    // чистим место для списка
+    refs.elementContainer.innerHTML = '';  
     // ругаемся и ждем следующую букву
-    const message = 'Too many matches found. Please enter a more specific query!'
-    error({
-      text: message,
-      delay: 2000,  
-    }); 
+    errorRequest('Too many matches found. Please enter a more specific query!');
   }
 }
-
 // Создаем разметку для элемента по шаблону из .hbs
 function showContentsElement(element) {
+  window.addEventListener('keydown', onKeyPress);
+  window.addEventListener('click', onOverlayClick);
   const markup = elementMarkupTemlate(element);
-   //   Добавляем новую разметку для элемента
-  refs.countryContainer.insertAdjacentHTML('beforeend', markup);
+  // Добавляем новую разметку для элемента
+  refs.elementContainer.insertAdjacentHTML('beforeend', markup);
 };
-
-function errorRequest(err){
-  clearContent();
-  const message = 'Invalid request. Please try again'
+// сообщние об ошибке
+function errorRequest(message){
       error({
       text: message,
       delay: 7000,  
     }); 
 };
-
+// чистка экрана
 function clearContent(){
   refs.input.value = '';
   refs.inputList.innerHTML = '';
-  refs.countryContainer.innerHTML = '';  
+  refs.elementContainer.innerHTML = '';  
+};
+// вываливание по ESC
+function onKeyPress(event) {
+  switch (event.code) {
+    case 'Escape': {
+      clearContent();
+      break;
+      // можно еще case добавить
+    };
+  }
 };
 
+// вываливание по клику мышки на экране
+function onOverlayClick(event) {
+  const target = event.target;
+  if (target.classList.value === "screen__overlay") {
+    clearContent();
+  }
+};
