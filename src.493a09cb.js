@@ -24,4 +24,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"lodash.debounce":"PZFh","./pnotify":"fRfm","./refs":"VyiV","./getList":"mZIX","../templates/markup.hbs":"mTXF"}],"Focm":[function(require,module,exports) {
 "use strict";require("./css/normalize.css"),require("./css/styles.css"),require("./js/renderPage");
 },{"./css/normalize.css":"zzlc","./css/styles.css":"zzlc","./js/renderPage":"GCMU"}]},{},["Focm"], null)
-//# sourceMappingURL=/parcel-project-template/src.493a09cb.js.map
+//# sourceMappingURL=/goit-js-hw-12-countries/src.493a09cb.js.map
