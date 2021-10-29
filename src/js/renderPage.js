@@ -34,7 +34,9 @@ function showResult(array) {
     // чистим место для списка
     refs.elementContainer.innerHTML = '';  
     // прикольней было вывести первые 10 элементов array 
-    showResult(array.slice(0, 9));
+    const newArray = array.slice(0, 10);
+    newArray[9] = {name:'<< and ' + (array.length - 10) + ' more searsh result >>'};
+    showResult(newArray);
     // но мы ругаемся и return ждать следующую букву
     errorRequest('Too many matches found. Please enter a more specific query!');
     return;
