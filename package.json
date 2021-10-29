@@ -6,11 +6,7 @@
   "homepage": "https://polygor1.github.io/goit-js-hw-12-countries",
   "scripts": {
     "dev": "parcel src/*.html",
-<<<<<<< HEAD
     "build": "parcel build src/*.html --public-url /goit-js-hw-12-countries/"
-=======
-    "build": "parcel build src/*.html --public-url /goit-js-hw-12-countries/"
->>>>>>> 8e1def92f30020114fa4bc77b08c84cb4d0bdf55
   },
   "repository": {
     "type": "git",

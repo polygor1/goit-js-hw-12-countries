@@ -5,12 +5,12 @@ import {refs} from './refs';
 import getList from './getList';
 import elementMarkupTemlate from '../templates/markup.hbs';
 
-// ========= main start ===============
+// ========= main start ===========
 // Вводим строку в input и ждем
 refs.input.addEventListener('input',
-  debounce(getSearchString, 500),
+  debounce(getSearchString, 750),
 );
-// ========= main end ===============
+// ========= main end =============
 
 // Проверяем значение с инпута 
 function getSearchString(event) {
@@ -33,7 +33,9 @@ function showResult(array) {
   if (array.length > 10) {
     // чистим место для списка
     refs.elementContainer.innerHTML = '';  
-    // ругаемся и ждем следующую букву
+    // прикольней было вывести первые 10 элементов array 
+    showResult(array.slice(0, 9));
+    // но мы ругаемся и return ждать следующую букву
     errorRequest('Too many matches found. Please enter a more specific query!');
     return;
   }
@@ -58,9 +60,16 @@ function showResult(array) {
     });
     return;
   };
-//  во всех остальных случаях
+  // console.log('во всех остальных случаях');
+  // console.log(array.status);
+  if (array.status === 404) {
+    errorRequest('Nothing found. Please try again');
     clearContent();
-    showContentsElement(array);
+    return;
+  };
+      
+  clearContent();
+  showContentsElement(array);
 };
 // Создаем разметку для элемента по шаблону из .hbs
 function showContentsElement(element) {
@@ -72,10 +81,11 @@ function showContentsElement(element) {
 };
 // сообщние об ошибке
 function errorRequest(message){
-      error({
-      text: message,
-      delay: 7000,  
-    }); 
+  error({
+    title: '',
+    text: message,
+    delay: 2500,  
+  }); 
 };
 // чистка экрана
 function clearContent(){
