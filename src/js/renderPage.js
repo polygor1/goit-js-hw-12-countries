@@ -6,6 +6,7 @@ import getList from './getList';
 import elementMarkupTemlate from '../templates/markup.hbs';
 
 // ========= main start ===========
+
 // Вводим строку в input и ждем
 refs.input.addEventListener('input',
   debounce(getSearchString, 750),
@@ -36,6 +37,7 @@ function showResult(array) {
     // прикольней было вывести первые 10 элементов array 
     const newArray = array.slice(0, 10);
     newArray[9] = {name:'<< and ' + (array.length - 10) + ' more searsh result >>'};
+    console.log(newArray);
     showResult(newArray);
     // но мы ругаемся и return ждать следующую букву
     errorRequest('Too many matches found. Please enter a more specific query!');
@@ -58,7 +60,7 @@ function showResult(array) {
         return element.name === event.target.textContent
       });
       // показываем контент выбранного элемента
-      showContentsElement({ targetElement });
+      targetElement.numericCode ? showContentsElement({ targetElement }) : errorRequest('Invalid request. Please try again');
     });
     return;
   };
