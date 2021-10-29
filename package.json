@@ -1,22 +1,22 @@
 {
-  "name": "parcel-project-template",
+  "name": "goit-js-hw-12-countries",
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://polygor1.github.io/parcel-project-template",
+  "homepage": "https://polygor1.github.io/goit-js-hw-12-countries",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "build": "parcel build src/*.html --public-url /goit-js-hw-12-countriese/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/polygor1/parcel-project-template.git"
+    "url": "git+https://github.com/polygor1/goit-js-hw-12-countries.git"
   },
   "keywords": [],
   "author": "Igor Polyakov <polygor@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/polygor1/parcel-project-template/issues"
+    "url": "https://github.com/polygor1/goit-js-hw-12-countries/issues"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
